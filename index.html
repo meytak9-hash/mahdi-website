@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>مهدی اردستانی | Developer</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Vazirmatn',sans-serif;
+    background:#07070c;
+    color:white;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#6c2cff;
+    filter:blur(180px);
+    opacity:.18;
+    top:-150px;
+    left:-150px;
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:450px;
+    height:450px;
+    background:#00e5ff;
+    filter:blur(180px);
+    opacity:.12;
+    bottom:-150px;
+    right:-100px;
+    z-index:-1;
+}
+
+/* منو */
+
+nav{
+    width:90%;
+    max-width:1100px;
+    margin:25px auto;
+    padding:15px 22px;
+    border:1px solid rgba(255,255,255,.08);
+    background:rgba(15,15,25,.65);
+    backdrop-filter:blur(20px);
+    border-radius:20px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    position:relative;
+    z-index:10;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:#8d5cff;
+}
+
+nav a{
+    color:#aaa;
+    text-decoration:none;
+    margin-right:25px;
+    font-size:14px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:white;
+}
+
+/* صفحه اول */
+
+.hero{
+    min-height:85vh;
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:50px;
+}
+
+.hero-text{
+    max-width:650px;
+}
+
+.badge{
+    display:inline-block;
+
+    padding:8px 15px;
+
+    border-radius:30px;
+
+    background:rgba(141,92,255,.1);
+
+    border:1px solid rgba(141,92,255,.3);
+
+    color:#b99cff;
+
+    font-size:13px;
+
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:clamp(55px,9vw,110px);
+
+    line-height:.95;
+
+    font-weight:900;
+
+    letter-spacing:-4px;
+}
+
+.hero h1 span{
+    display:block;
+
+    background:
+    linear-gradient(
+        90deg,
+        #ffffff,
+        #8d5cff,
+        #00e5ff
+    );
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+}
+
+.hero p{
+    color:#999;
+
+    font-size:17px;
+
+    line-height:2;
+
+    margin:30px 0;
+
+    max-width:550px;
+}
+
+.buttons{
+    display:flex;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:14px 22px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    font-size:14px;
+
+    transition:.3s;
+}
+
+.primary{
+    background:
+    linear-gradient(
+        135deg,
+        #7b45ff,
+        #4d20d8
+    );
+
+    color:white;
+
+    box-shadow:
+    0 10px 35px
+    rgba(123,69,255,.25);
+}
+
+.primary:hover{
+    transform:translateY(-4px);
+}
+
+.secondary{
+    border:1px solid #292936;
+
+    color:#ddd;
+
+    background:#111119;
+}
+
+.secondary:hover{
+    background:#181822;
+}
+
+/* کارت پروفایل */
+
+.profile{
+    width:300px;
+    height:380px;
+
+    border-radius:35px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #151522,
+        #0d0d14
+    );
+
+    border:1px solid rgba(255,255,255,.1);
+
+    box-shadow:
+    0 30px 80px
+    rgba(0,0,0,.5);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    position:relative;
+
+    transform:rotate(3deg);
+
+    transition:.5s;
+}
+
+.profile:hover{
+    transform:
+    rotate(0deg)
+    translateY(-10px);
+}
+
+.avatar{
+    width:130px;
+    height:130px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:42px;
+
+    font-weight:900;
+
+    background:
+    linear-gradient(
+        135deg,
+        #8d5cff,
+        #00d9ff
+    );
+
+    box-shadow:
+    0 0 60px
+    rgba(108,44,255,.35);
+
+    margin-bottom:25px;
+}
+
+.profile h2{
+    font-size:23px;
+}
+
+.profile p{
+    color:#777;
+
+    margin-top:8px;
+}
+
+/* بخش‌ها */
+
+section{
+    width:90%;
+
+    max-width:1100px;
+
+    margin:120px auto;
+}
+
+.section-title{
+    margin-bottom:40px;
+}
+
+.section-title small{
+    color:#8d5cff;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+}
+
+.section-title h2{
+    font-size:40px;
+
+    margin-top:8px;
+}
+
+/* مهارت‌ها */
+
+.skills{
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:15px;
+}
+
+.skill{
+    padding:25px;
+
+    border-radius:20px;
+
+    background:#0e0e15;
+
+    border:1px solid #1d1d28;
+
+    transition:.3s;
+}
+
+.skill:hover{
+    transform:translateY(-7px);
+
+    border-color:#7040e8;
+}
+
+.skill strong{
+    font-size:17px;
+}
+
+.skill p{
+    color:#777;
+
+    font-size:13px;
+
+    margin-top:8px;
+}
+
+
+/* درباره من */
+
+.about{
+    padding:40px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #101018,
+        #0b0b11
+    );
+
+    border:1px solid #1b1b26;
+
+    border-radius:30px;
+}
+
+.about p{
+    color:#aaa;
+
+    line-height:2.2;
+
+    font-size:16px;
+}
+
+
+/* تماس */
+
+.contact{
+    text-align:center;
+
+    padding:70px 20px;
+
+    border-radius:35px;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(108,44,255,.15),
+        rgba(0,229,255,.05)
+    );
+
+    border:1px solid
+    rgba(255,255,255,.08);
+}
+
+.contact h2{
+    font-size:40px;
+}
+
+.contact p{
+    color:#888;
+
+    margin:15px 0 30px;
+}
+
+
+/* پایین سایت */
+
+footer{
+    text-align:center;
+
+    padding:30px;
+
+    color:#555;
+
+    font-size:13px;
+}
+
+
+/* موبایل */
+
+@media(max-width:800px){
+
+    nav a{
+        display:none;
+    }
+
+    .hero{
+        flex-direction:column;
+
+        text-align:center;
+
+        justify-content:center;
+
+        padding-top:60px;
+    }
+
+    .hero p{
+        margin-left:auto;
+
+        margin-right:auto;
+    }
+
+    .buttons{
+        justify-content:center;
+    }
+
+    .profile{
+        width:260px;
+
+        height:330px;
+    }
+
+    .skills{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .section-title h2{
+        font-size:32px;
+    }
+}
+
+@media(max-width:450px){
+
+    .hero h1{
+        font-size:58px;
+    }
+
+    .skills{
+        grid-template-columns:1fr;
+    }
+
+    section{
+        margin:80px auto;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- منو -->
+
+<nav>
+
+    <div class="logo">
+        MA<span>.</span>
+    </div>
+
+    <div>
+
+        <a href="#skills">
+            مهارت‌ها
+        </a>
+
+        <a href="#about">
+            درباره من
+        </a>
+
+        <a href="#contact">
+            تماس
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- صفحه اول -->
+
+<main class="hero">
+
+    <div class="hero-text">
+
+        <div class="badge">
+            آماده برای پروژه‌های جدید
+        </div>
+
+        <h1>
+
+            MAHDI
+
+            <span>
+                ARDESTANI
+            </span>
+
+        </h1>
+
+        <p>
+
+            من مهدی هستم، برنامه‌نویس و علاقه‌مند به
+            ساخت پروژه‌های خلاقانه با Python،
+            طراحی سایت و توسعه بات.
+
+        </p>
+
+        <div class="buttons">
+
+            <a
+            class="btn primary"
+            href="https://instagram.com/mahdi_ar1819"
+            target="_blank">
+
+                اینستاگرام ↗
+
+            </a>
+
+            <a
+            class="btn secondary"
+            href="tel:09125036239">
+
+                تماس با من
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- کارت پروفایل -->
+
+    <div class="profile">
+
+        <div class="avatar">
+            MA
+        </div>
+
+        <h2>
+            مهدی اردستانی
+        </h2>
+
+        <p>
+            DEVELOPER • 16 YEARS OLD
+        </p>
+
+    </div>
+
+</main>
+
+
+<!-- مهارت‌ها -->
+
+<section id="skills">
+
+    <div class="section-title">
+
+        <small>
+            WHAT I DO
+        </small>
+
+        <h2>
+            My Expertise
+        </h2>
+
+    </div>
+
+
+    <div class="skills">
+
+        <div class="skill">
+
+            <strong>
+                Python
+            </strong>
+
+            <p>
+                برنامه‌نویسی و اتوماسیون
+            </p>
+
+        </div>
+
+
+        <div class="skill">
+
+            <strong>
+                Bot Development
+            </strong>
+
+            <p>
+                ساخت و توسعه ربات
+            </p>
+
+        </div>
+
+
+        <div class="skill">
+
+            <strong>
+                Web Development
+            </strong>
+
+            <p>
+                HTML / CSS / JavaScript
+            </p>
+
+        </div>
+
+
+        <div class="skill">
+
+            <strong>
+                WordPress
+            </strong>
+
+            <p>
+                طراحی و ساخت سایت
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- درباره من -->
+
+<section id="about">
+
+    <div class="section-title">
+
+        <small>
+            ABOUT ME
+        </small>
+
+        <h2>
+            WHO AM I?
+        </h2>
+
+    </div>
+
+
+    <div class="about">
+
+        <p>
+
+            من مهدی اردستانی هستم، دانش‌آموز رشته کامپیوتر
+            و علاقه‌مند به برنامه‌نویسی و ساخت پروژه‌های
+            دیجیتال.
+
+            بیشتر روی Python، توسعه وب، ساخت بات و
+            WordPress کار می‌کنم و همیشه دنبال یادگیری
+            چیزهای جدید و ساخت پروژه‌های جذاب هستم.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- تماس -->
+
+<section id="contact">
+
+    <div class="contact">
+
+        <h2>
+            پروژه‌ای تو ذهنت داری؟
+        </h2>
+
+        <p>
+            شاید بتونم کمکت کنم ایده‌ات رو به یک پروژه واقعی تبدیل کنی.
+        </p>
+
+        <div
+        class="buttons"
+        style="justify-content:center;">
+
+            <a
+            class="btn primary"
+            href="https://instagram.com/mahdi_ar1819"
+            target="_blank">
+
+                اینستاگرام ↗
+
+            </a>
+
+            <a
+            class="btn secondary"
+            href="tel:09125036239">
+
+                09125036239
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- فوتر -->
+
+<footer>
+
+    © 2026 مهدی اردستانی
+
+</footer>
+
+
+</body>
+</html>
